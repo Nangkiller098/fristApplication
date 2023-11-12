@@ -22,21 +22,20 @@ public class LinearLayoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_linear_layout);
         spinner= findViewById(R.id.spinnerCountry);
-//        String[] countries={"Cambodia","Thai","Vietnam","China","Korea","USA","Canada"};
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,countries);
-//        spinner.setAdapter(arrayAdapter);
+        String[] country={"Cambodia","Thai","Vietnam","China","Korea","USA","Canada"};
         List<Country> list = new ArrayList<>();
-        Country cambodia= new Country();
-        cambodia.setId(1);
-        cambodia.setName("Cambodia");
-        Country china= new Country();
-        list.add(cambodia);
+        for (String j:country)
+        {
+                Country cont = new Country();
+                cont.setId(j.length());
+                cont.setName(j);
+                list.add(cont);
+                CountryBaseAdapter countryBaseAdapter = new CountryBaseAdapter(list,this);
+                spinner.setAdapter(countryBaseAdapter);
 
-        china.setId(2);
-        china.setName("China");
-        list.add(china);
-        CountryBaseAdapter countryBaseAdapter = new CountryBaseAdapter(list,this);
-        spinner.setAdapter(countryBaseAdapter);
+        }
+
+
 
 
     }
